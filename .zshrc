@@ -126,4 +126,7 @@ eval "$(zoxide init zsh)"
 # browser
 export BROWSER="wslview"
 
+# editor
+export LAUNCH_EDITOR=code
+
 
