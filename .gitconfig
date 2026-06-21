@@ -4,3 +4,6 @@
 
 [core]
 	editor = code --wait
+
+[includeIf "gitdir:~/repo/innovue.ltd/"]
+    path = ~/.gitconfig-innovue
