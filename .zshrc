@@ -25,7 +25,7 @@ ZSH_THEME="robbyrussell"
 
 # Uncomment one of the following lines to change the auto-update behavior
 # zstyle ':omz:update' mode disabled  # disable automatic updates
-zstyle ':omz:update' mode auto      # update automatically without asking
+zstyle ':omz:update' mode auto # update automatically without asking
 # zstyle ':omz:update' mode reminder  # just remind me to update when it's time
 
 # Uncomment the following line to change how often to auto-update (in days).
@@ -70,7 +70,17 @@ zstyle ':omz:update' mode auto      # update automatically without asking
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(zsh-autosuggestions zsh-syntax-highlighting git docker)
+plugins=(
+    zsh-autosuggestions
+    zsh-syntax-highlighting
+    git
+    mise
+    starship
+    fzf
+    zoxide
+    sops
+    docker
+)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -103,18 +113,6 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-# mise
-eval "$(/home/cillian/.local/bin/mise activate zsh)"
-
-# fzf
-source <(fzf --zsh)
-
-# starship
-eval "$(starship init zsh)"
-
-# zoxide
-eval "$(zoxide init zsh)"
-
 # browser
 export BROWSER="explorer.exe"
 
@@ -123,3 +121,7 @@ export LAUNCH_EDITOR=code
 
 # WSL: use Windows ssh
 source ~/scripts/agent-bridge.sh
+
+# SOPS
+export SOPS_AGE_KEY_FILE="$HOME/.config/mise/age.txt"
+export SOPS_AGE_RECIPIENTS="$(age-keygen -y "$SOPS_AGE_KEY_FILE")"
