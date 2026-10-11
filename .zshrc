@@ -120,8 +120,7 @@ export BROWSER="explorer.exe"
 export LAUNCH_EDITOR=code
 
 # WSL: use Windows ssh
-source ~/scripts/agent-bridge.sh
+source ~/scripts/ssh-agent-bridge.sh
 
 # SOPS
-export SOPS_AGE_KEY_FILE="$HOME/.config/mise/age.txt"
-export SOPS_AGE_RECIPIENTS="$(age-keygen -y "$SOPS_AGE_KEY_FILE")"
+export SOPS_AGE_RECIPIENTS="$(find $HOME/.config/sops/age -name "keys*.txt" -exec age-keygen -y {} \; | paste -sd,)"
